@@ -9,17 +9,31 @@ readers/writers. This format allows data transfer and communication between soft
 character sheets.
 
 - [Project definition](#project-definition)
-  - [Objectives](#objectives)
-  - [Non-objectives](#non-objectives)
+  - [Goals](#goals)
+  - [Non-Goals](#non-goals)
 - [Legal](#legal)
   - [Legal notice](#legal-notice)
   - [License](#license)
 
 ## Project definition
 
-### Objectives
+### Goals
 
-### Non-objectives
+The objectives of this project are, in order of priority:
+
+1. Define an interchange format allowing data transfer between various tools regarding Ars Magica 5th Edition
+2. Make the interchange format un-ambiguous, that is:
+   1. There is only one way to represent data
+   2. Upon reading data, there is only one way to understand it
+3. Have the data format support as much as possible the elements of the Ars Magica 5th game to allow broad transfer
+   between tools
+4. Implement readers and writers for the format, as libraries, in code languages as useful to the community
+
+### Non-Goals
+
+The following goals, without limitation, are explicitly out-of-scope for this project (and in no particular order):
+
+- Provide data in the defined format for import in tools supporting the format, e.g. data provided in canon source book
 
 ## Legal
 
