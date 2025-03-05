@@ -1,0 +1,37 @@
+{
+    "arm5": {
+        "version": {
+            "major": 0,
+            "minor": 0
+        },
+        "characters": [
+            {
+                "name": "The Berserker",
+                "characteristics": {
+                    "dexterity": 2,
+                    "quickness": 1,
+                    "stamina": 2,
+                    "strength": 3,
+                    "communication": -1,
+                    "intelligence": -2,
+                    "perception": -1,
+                    "presence": -1
+                },
+                "size": 1,
+                "age": {
+                    "current": 15,
+                    "apparent": 15
+                },
+                "decrepitude": {
+                    "score": 0,
+                    "points": 0
+                },
+                "warping": {
+                    "score": 0,
+                    "points": 0
+                }
+                
+            }
+        ]
+    }
+}
