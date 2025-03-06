@@ -1,6 +1,6 @@
 package arm5
 
-#Characteristics: #SentientCharacteristics | #AnimalCharacteristics
+#Characteristics: #SentientCharacteristics | #AnimalCharacteristics | #IncorporealCharacteristics
 
 #SentientCharacteristics: {
 	// physical
@@ -19,7 +19,6 @@ package arm5
 	custom?: [string]: _Characteristic
 }
 
-
 #AnimalCharacteristics: {
 	// physical
 	dexterity!: _Characteristic
@@ -37,4 +36,22 @@ package arm5
 	custom?: [string]: _Characteristic
 }
 
-_Characteristic: int64 | *0
+#IncorporealCharacteristics: {
+	// forbid physical characteristics by setting them to bottom, always incompatible
+	// See https://cuelang.org/docs/tour/types/structs/
+	dexterity?: _|_
+	quickness?: _|_
+	stamina?:   _|_
+	strength?:  _|_
+
+	//mental
+	communication!: _Characteristic
+	cunning!:       _Characteristic
+	perception!:    _Characteristic
+	presence!:      _Characteristic
+
+	// Custom characteristics
+	custom?: [string]: _Characteristic
+}
+
+_Characteristic: *0 | int64 | #SumInt64

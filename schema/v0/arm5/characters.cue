@@ -5,29 +5,37 @@ arm5: {
 }
 
 #Character: {
-	player?:          string
-	name?:            string
-	characteristics?: #Characteristics
-	size?: int64
+	player?:     string
+	short_name?: string
+	biography?:  #CharacterBiography
+	attributes?: #CharacterAttributes
 	age?: {
-		current?: int64
+		current?:  int64
 		apparent?: int64
 	}
 	decrepitude?: {
-		score: int64
+		score:  int64
 		points: int64
 	}
 	warping?: {
-		score: int64
+		score:  int64
 		points: int64
 	}
 
 	// Allow unsupported fields for tools that need to round-trip data we don't support
-	// Format is custom: {"$TOOL_NAME": ...}
-	// For instance, the Roll20 sheet might use
-	// custom: {"roll20": ...}
-	custom?: [string]: {...}
+	custom?: #ToolsCustomFields
 
 	// Allow undefined fields for forward compatibility of the parsers
 	...
+}
+
+#CharacterBiography: {
+
+	aliases?: [...string]
+	description?: string
+}
+
+#CharacterAttributes: {
+	characteristics?: #Characteristics
+	size?:            int64
 }
