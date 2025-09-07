@@ -4,9 +4,12 @@
 
 ![Ars Magica 5th Open License Logo][arm5-open-license-logo]
 
-This repository contains a JSON-based interchange format for the Ars Magica 5th Edition TTRPG, and associated
-readers/writers. This format allows data transfer and communication between software built for the Ars Magica 5h
-Edition, such as online character sheets.
+This repository defines an interchange format for the Ars Magica 5th Edition TTRPG. This format allows data transfer and
+inter-operability between softwares built for the Ars Magica 5h Edition, such as character builder, character sheets,
+VTTs, game managers etc...
+
+The format specification is implemented in libraries in various programming languages for use by software authors, to be
+able to read and write the interchange format.
 
 - [Project definition](#project-definition)
   - [Goals](#goals)
@@ -21,7 +24,8 @@ Edition, such as online character sheets.
 
 ### Goals
 
-The objectives of this project are, in order of priority:
+The objectives of this project are defined below, in order of priority. This means that a higher-priority goal has
+precedence other a lower-priority one, should they be at odds
 
 1. Define an interchange format allowing data transfer between various tools supporting Ars Magica 5th Edition, such as
    Virtual Tabletops (VTT), character builders, compendium, etc..
@@ -32,31 +36,31 @@ The objectives of this project are, in order of priority:
    1. There is only one way to represent data
    2. Upon reading data, there is only one way to understand it
 
-4. Implement readers and writers for the format, as libraries, in programming languages as useful to the community
+4. Implement readers and writers for the format, as libraries, in programming languages useful to the community
 5. Support backward and forward compatibility as much as possible:
-   - **backward compatibility** Only major version change of the schema may break backward compatibility. Reader
-     libraries should provide conversion utilities from any previous major version to the latest version (ideally this
-     is automatic when parsing data into structured language data)
-   - **forward compatibility** The schema allows for additional keys not yet define, so that older versions may accept
+   - **backward compatibility** Only major version change of the specification or schema may break backward
+     compatibility. Reader libraries should provide conversion utilities from any previous major version to the latest
+     version (ideally this is automatic when parsing data into structured language data)
+   - **forward compatibility** The schema allows for additional keys not yet defined, so that older versions may accept
      data from newer version (from the same Major definition). Libraries are required to round-trip such data even if
      they do not support them. This allows an outdated library/schema version to use the subset of data it understands
      without hard errors.
 
 ### Non-Goals
 
-The following goals, without limitation, are explicitly out-of-scope for this project (and in no particular order):
+The following goals, without limitation, are explicitly out-of-scope for this project (listed in no particular order):
 
 - Enforce the rules of the game. We aim to support as much house-ruling as possible. Rule-enforcing could be built on
   top of the data format, but this is a non-goal for the data format.
-- Provide data in the defined format for import in tools supporting the format, e.g. data provided in canon source
-  books. This must be possible to built on top of the data format (this is one of the envision usage) but it is not the
-  goal of the data format to provide the data itself
+- Provide data in the defined format for import in tools supporting the format, e.g. data provided in canon source books
+  (i.e. a compendium). This must be possible to built on top of the data format (this is one of the envisioned usage)
+  but it is not the goal of the data format to provide the data.
 
 ## Repository layout
 
-- `schema`: definitions of the schema, each major version in a separate folder.
-- `libraries`: (TODO) contains the code libraries with reader/writer libraries. Each library has its own dedicated
-  folder, named after the programming language used.
+- `specifications/`: definitions of the schema, each major version in a separate folder.
+- `libraries/`: (TODO) contains the programming libraries with reader/writer capabilities, as described above. Each
+  library has its own dedicated folder, named after the programming language used.
 
 ## Technologies
 
