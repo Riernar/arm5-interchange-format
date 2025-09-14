@@ -5,20 +5,21 @@ characters?: [character_id=string]: #Character
 #Character: {
 	player?:     string
 	short_name?: string
-	biography?:  #CharacterBiography
+
+	infos?:      #CharacterInfos
 	attributes?: #CharacterAttributes
-	age?: {
-		current?:  int64
-		apparent?: int64
-	}
-	decrepitude?: {
-		score:  int64
-		points: int64
-	}
-	warping?: {
-		score:  int64
-		points: int64
-	}
+	aging?:      #CharacterAging
+	warping?:    #CharacterWarping
+
+	// Allow unsupported fields for tools that need to round-trip data we don't support
+	custom?: #ToolsCustomFields
+	// Allow undefined fields for forward compatibility of the parsers
+	...
+}
+
+#CharacterInfos: {
+	names?: [...string]
+	description?: string
 
 	// Allow unsupported fields for tools that need to round-trip data we don't support
 	custom?: #ToolsCustomFields
@@ -27,10 +28,25 @@ characters?: [character_id=string]: #Character
 	...
 }
 
-#CharacterBiography: {
+#CharacterAging: {
+	current_age?:              int64
+	apparent_age?:             int64
+	total_decrepitude_points?: int64
 
-	aliases?: [...string]
-	description?: string
+	// Allow unsupported fields for tools that need to round-trip data we don't support
+	custom?: #ToolsCustomFields
+	// Allow undefined fields for forward compatibility of the parsers
+	...
+}
+
+#CharacterWarping: {
+
+	total_warping_points?: int64
+
+	// Allow unsupported fields for tools that need to round-trip data we don't support
+	custom?: #ToolsCustomFields
+	// Allow undefined fields for forward compatibility of the parsers
+	...
 }
 
 #CharacterAttributes: {
