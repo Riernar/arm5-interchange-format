@@ -1,8 +1,6 @@
 package arm5
 
-arm5: {
-	characters?: [...#Character]
-}
+characters?: [character_id=string]: #Character
 
 #Character: {
 	player?:     string

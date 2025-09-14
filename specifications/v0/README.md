@@ -7,7 +7,7 @@ See [Versioning](../README.md#versioning) for more details on versioning.
 
 - [Table of Content](#table-of-content)
 - [Definitions](#definitions)
-- [Schema](#schema)
+- [CUE Schema](#cue-schema)
 - [Design decisions](#design-decisions)
   - [Unknown keys \& forward compatibility](#unknown-keys--forward-compatibility)
   - [Tool-specific data](#tool-specific-data)
@@ -17,6 +17,7 @@ See [Versioning](../README.md#versioning) for more details on versioning.
   - [ID](#id)
   - [Disjunctions types](#disjunctions-types)
   - [Computations](#computations)
+- [Specification](#specification)
 
 ## Definitions
 
@@ -25,7 +26,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 [rfc-2119]: https://www.rfc-editor.org/rfc/rfc2119
 
-## Schema
+## CUE Schema
 
 This specification is partially written as a data schema in the [CUE][cuelang] language, defined in the `arm5/` folder
 next to this document.
@@ -115,3 +116,22 @@ compilers/type-checkers.
 
 It is sometimes useful to store how a specific value was computed from the rest of the data. This is not always
 available (e.g. template characters from the source books only have final values). How can we handle that?
+
+## Specification
+
+The transfer format is expressed as nested JSON using the CUE language. While the primary format is JSON, other file
+format which can support JSON semantics MAY be supported by implementations (e.g. TOML, YAML).
+
+The data is stored in a single top-level JSON object. This object contains several optional mappings of top-levels
+entities (such as characters, spells, etc...). This supports transferring different kind of entities using the same
+format. The consuming application is responsible for checking only the expected mapping(s) are present, and they have a
+suitable length.
+
+> [!TIP]
+>
+> **Example**
+>
+> An application has an import button to import spells into an existing character. The users past data, which is given
+> to a parser library provided with this specification. When the application gets a structured object back from the
+> parser library, it should check it only received spells in the top-levels mapping, and perhaps check there is only one
+> spell, if it expected a single one.
