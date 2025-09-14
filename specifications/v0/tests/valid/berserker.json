@@ -14,17 +14,19 @@
             "warping": {
                 "total_warping_points": 0
             },
-            "characteristics": {
-                "dexterity": 2,
-                "quickness": 1,
-                "stamina": 2,
-                "strength": 3,
-                "communication": -1,
-                "intelligence": -2,
-                "perception": -1,
-                "presence": -1
-            },
-            "size": 1
+            "attributes": {
+                "characteristics": {
+                    "dexterity": 2,
+                    "quickness": 1,
+                    "stamina": 2,
+                    "strength": 3,
+                    "communication": -1,
+                    "intelligence": -2,
+                    "perception": -1,
+                    "presence": -1
+                },
+                "size": 1
+            }
         }
     }
 }

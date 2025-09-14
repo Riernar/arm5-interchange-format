@@ -17,6 +17,9 @@ See [Versioning](../README.md#versioning) for more details on versioning.
   - [ID](#id)
   - [Disjunctions types](#disjunctions-types)
   - [Computations](#computations)
+  - [Virtues \& Flaw](#virtues--flaw)
+    - [Templates \& Compendium](#templates--compendium)
+    - [Compendium ID](#compendium-id)
 - [Specification](#specification)
 
 ## Definitions
@@ -55,6 +58,11 @@ The expected behaviors regarding those unknown keys are as follows:
 - If other data in the structure is edited using a tool, the tool MAY delete or modify in arbitrary ways the unsupported
   data. Tools MAY warn user and ask for confirmation before altering data. A single warning when the data is loaded is
   probably OK
+
+> [!IMPORTANT]
+>
+> When testing the schema on our test objects, this prevents detecting typo in fields, as they are always accepted.
+> Should this be part only of the implementations, instead of the CUE schema?
 
 [cuelang-definitions]: https://cuelang.org/docs/tour/types/definitions/
 
@@ -116,6 +124,28 @@ compilers/type-checkers.
 
 It is sometimes useful to store how a specific value was computed from the rest of the data. This is not always
 available (e.g. template characters from the source books only have final values). How can we handle that?
+
+### Virtues & Flaw
+
+#### Templates & Compendium
+
+The V&F as defined in [`virtues_and_flaws.cue`](./arm5/virtues_and_flaws.cue) are only suitable for completely specified
+virtues and flaw on a character. For compendium, we need some kind of V&F template to support entries such as _Affinity
+with (Art)_ or _(Astological) Mutable (Flaw)_.
+
+Additionaly, some V&F require choices and additional design, such as: _Faerie Blood_, _Mythic Blood_ (which also grants
+additional virtues).
+
+#### Compendium ID
+
+For standard V&F part of the publication line, it might be useful to signal to the receiving app that the v&f is part of
+something it might know (e.g. for additional support beyond what is supported in the interchange format, for
+localization, etc...).
+
+Use a `compendium_id` field, only filed in the compendium built on top of the format?
+
+This means the published V&F require special handling. It would be more general to have some system so that V&F may
+describe their effects (contain a spell, give bonus to scores / xp accumulation / ...). Some kind of hook system?
 
 ## Specification
 

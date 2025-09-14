@@ -6,10 +6,12 @@ characters?: [character_id=string]: #Character
 	player?:     string
 	short_name?: string
 
-	infos?:      #CharacterInfos
-	attributes?: #CharacterAttributes
-	aging?:      #CharacterAging
-	warping?:    #CharacterWarping
+	infos?: #CharacterInfos
+
+	aging?:             #CharacterAging
+	warping?:           #CharacterWarping
+	attributes?:        #CharacterAttributes
+	virtues_and_flaws?: #CharacterVF
 
 	// Allow unsupported fields for tools that need to round-trip data we don't support
 	custom?: #ToolsCustomFields
@@ -52,4 +54,9 @@ characters?: [character_id=string]: #Character
 #CharacterAttributes: {
 	characteristics?: #Characteristics
 	size?:            int64
+}
+
+#CharacterVF: {
+	virtues: [virtue_id=string]: #Virtue
+	flaws: [flaw_id=string]:     #Flaw
 }
